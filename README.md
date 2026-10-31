@@ -36,3 +36,7 @@ Front matter: `title, slug, tier (free|tier1|tier2), emoji, order, teaser, insid
 
 ## Preview locally
 `python3 -m http.server 8090` then open http://127.0.0.1:8090/
+
+## Guide covers
+
+The guide covers in `assets/img/covers/` are original illustrations made for LCLC, with the LCLC mark added on top. They are not stock photos, so no third-party credit is needed. There are no people and no cannabis imagery in them.

@@ -212,3 +212,7 @@ footer .fine{font-size:13px;max-width:760px}
 @media (max-width:1060px){.top .brand .b-full{display:none}.top .brand .b-short{display:inline}}
 .brand-badge{display:block;width:min(200px,50vw);height:auto;margin:0 0 18px}
 @media (max-width:640px){.brand-badge{width:132px;margin-bottom:12px}}
+
+/* guide covers */
+.gcard .gcover{display:block;width:calc(100% + 40px);max-width:none;margin:-20px -20px 10px;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:inherit;border-bottom-left-radius:0;border-bottom-right-radius:0;background:#1d0b3a}
+.gcover-hero{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:18px;margin:0 0 18px;background:#1d0b3a;box-shadow:0 10px 30px rgba(0,0,0,.35)}

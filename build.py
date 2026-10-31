@@ -86,7 +86,7 @@ def honesty(r, compact=False, tag="h2"):
   {'' if compact else '<p class="muted">Prices are what we paid or found when we checked, and each guide says when. They change, so always check before you book.</p>'}
 </aside>"""
 
-def head(title, desc, r, path):
+def head(title, desc, r, path, img="assets/img/crew.webp"):
     return f"""<!doctype html>
 <html lang="en-GB">
 <head>
@@ -97,7 +97,7 @@ def head(title, desc, r, path):
 <link rel="canonical" href="{SITE_URL}{path}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
-<meta property="og:image" content="{SITE_URL}assets/img/crew.webp">
+<meta property="og:image" content="{SITE_URL}{img}">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#05010c">
 <meta property="og:site_name" content="{BRAND_FULL}">
@@ -153,6 +153,7 @@ def gcard(g, r):
     lk = " locked" if g["tier"] != "free" else ""
     more = "Read free →" if g["tier"] == "free" else "See what's inside →"
     return f"""<a class="card gcard{lk}" href="{r}guides/{g['slug']}.html">
+  <img class="gcover" src="{r}assets/img/covers/{g['slug']}.webp" alt="" width="1200" height="630" loading="lazy" decoding="async">
   <div class="gtop"><span class="gemo" aria-hidden="true">{g['emoji']}</span>{chip(g['tier'])}</div>
   <b>{esc(g['title'])}</b><p>{esc(g['teaser'])}</p><span class="more">{more}</span></a>"""
 
@@ -262,10 +263,10 @@ def vid_block(g, r):
 r = "../"
 for g in ALL:
     tier = g["tier"]
-    page = head(f"{g['title']} | {BRAND_FULL}", g["teaser"], r, f"guides/{g['slug']}.html")
+    page = head(f"{g['title']} | {BRAND_FULL}", g["teaser"], r, f"guides/{g['slug']}.html", f"assets/img/covers/{g['slug']}.webp")
     page += f"""<article class="narrow">
   <p class="crumbs"><a href="{r}guides.html">Guides</a> › <a href="{r}guides.html#{tier}">{TIER_LABEL[tier]}</a></p>
-  <header class="ghead"><div class="meta">{chip(tier)}<span>Checked {UPDATED}</span></div><h1>{g['emoji']} {esc(g['title'])}</h1><p class="lede">{esc(g['teaser'])}</p></header>
+  <header class="ghead"><img class="gcover-hero" src="{r}assets/img/covers/{g['slug']}.webp" alt="Cover illustration for {esc(g['title'])}" width="1200" height="630" fetchpriority="high"><div class="meta">{chip(tier)}<span>Checked {UPDATED}</span></div><h1>{g['emoji']} {esc(g['title'])}</h1><p class="lede">{esc(g['teaser'])}</p></header>
   {honesty(r, compact=True)}
   <div style="height:22px"></div>
   {vid_block(g, r)}
